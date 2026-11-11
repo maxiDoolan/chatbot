@@ -11,13 +11,13 @@ client = Groq(api_key=api_key)
 st.title("🤖 Chatbot DOOLAN")
 if st.button("🗑️ Limpiar chat"):
     st.session_state.historial = [
-        {"role": "system", "content": "Sos un asistente virtual que responde siempre en español argentino, sos muy chistoso y descansero."}
+        {"role": "system", "content": "Sos un asistente virtual que responde siempre en español argentino, sos muy cordial."}
     ]
     st.rerun()
 
 if "historial" not in st.session_state:
     st.session_state.historial = [
-        {"role": "system", "content": "Sos un asistente virtual que responde siempre en español argentino, sos muy chistoso y descansero."}
+        {"role": "system", "content": "Sos un asistente virtual que responde siempre en español argentino, sos muy cordial."}
     ]
 
 for mensaje in st.session_state.historial[1:]:
