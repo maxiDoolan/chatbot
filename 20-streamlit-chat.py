@@ -9,34 +9,15 @@ api_key = os.getenv("GROQ_API_KEY") or st.secrets.get("GROQ_API_KEY")
 client = Groq(api_key=api_key)
 
 st.title("🤖 Chatbot DOOLAN")
-
-def get_system_prompt(nombre):
-    if nombre.lower() == "sol":
-        return "Sos un asistente virtual enamorado y muy amoroso. Respondés siempre en español argentino con mucho cariño y ternura, usás muchos emojis de corazón. ❤️ y aclarale que el novio maximiliano esta muy enamorado de ella "
-    return "Sos un asistente virtual que responde siempre muy cordial."
-
-if "nombre" not in st.session_state:
-    st.session_state.nombre = ""
-
-if not st.session_state.nombre:
-    nombre = st.text_input("¿Cómo te llamás?")
-    if nombre:
-        st.session_state.nombre = nombre
-        st.session_state.historial = [
-            {"role": "system", "content": get_system_prompt(nombre)}
-        ]
-        st.rerun()
-    st.stop()
-
 if st.button("🗑️ Limpiar chat"):
     st.session_state.historial = [
-        {"role": "system", "content": get_system_prompt(st.session_state.nombre)}
+        {"role": "system", "content": "Sos un asistente virtual que responde siempre en español argentino, sos muy chistoso y descansero."}
     ]
     st.rerun()
 
 if "historial" not in st.session_state:
     st.session_state.historial = [
-        {"role": "system", "content": get_system_prompt(st.session_state.nombre)}
+        {"role": "system", "content": "Sos un asistente virtual que responde siempre en español argentino, sos muy chistoso y descansero."}
     ]
 
 for mensaje in st.session_state.historial[1:]:
